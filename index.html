@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17152b">
+  <meta name="description" content="Art Arena - learn to draw, practise with tutorials and compete in timed creative challenges.">
+  <title>ART ARENA — Draw, Learn, Compete</title>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Art Arena">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" data-page-link="home"><span class="brand-mark">✦</span><span>ART <b>ARENA</b><small>CREATE • LEARN • COMPETE</small></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-page-link="home">Home</button>
+      <button class="nav-link" data-page-link="training">Training</button>
+      <button class="nav-link" data-page-link="play">Play</button>
+      <button class="nav-link" data-open-studio="free">Studio</button>
+      <button class="nav-link" data-page-link="gallery">Gallery <span id="galleryCount" class="nav-count">0</span></button>
+    </nav>
+    <button class="button button-primary header-play" data-page-link="play">Play now <span>↗</span></button>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="homePage" class="page active">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> YOUR CREATIVE PLAYGROUND</div>
+          <h1>Every great artist<br>starts with a <em>line.</em></h1>
+          <p>Learn the tools, follow drawing tutorials, and take on creative challenges. Your canvas is ready.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" data-page-link="play">Start a challenge <span>→</span></button>
+            <button class="button button-ghost" data-open-studio="free">Open free studio</button>
+            <button class="button button-ghost" data-page-link="training">Explore tutorials</button>
+          </div>
+          <div class="hero-stats"><div><b id="statPrompts">60+</b><span>drawing prompts</span></div><div><b id="statTools">20+</b><span>creative tools</span></div><div><b>∞</b><span>ways to create</span></div></div>
+        </div>
+        <div class="hero-art" aria-label="Abstract colorful artwork">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-sun"></div><div class="art-shape shape-one"></div><div class="art-shape shape-two"></div>
+          <div class="art-shape shape-three"></div><div class="art-scribble">✳</div>
+          <div class="art-caption"><span>01 / CREATE</span><b>Make something<br>unexpected.</b></div>
+        </div>
+      </div>
+      <div class="section-heading"><div><span class="eyebrow">PICK YOUR PATH</span><h2>How do you want to create?</h2></div></div>
+      <div class="feature-grid">
+        <article class="feature-card feature-training"><div class="feature-icon">✎</div><span class="card-kicker">LEARN AT YOUR PACE</span><h3>Training studio</h3><p>Step-by-step drawing lessons, tool guides and helpful tips for building your skills.</p><button class="text-button" data-page-link="training">Start learning ↗</button></article>
+        <article class="feature-card feature-play"><div class="feature-icon">◈</div><span class="card-kicker">BEAT THE CLOCK</span><h3>Creative challenge</h3><p>Get a drawing prompt, use a reference when you need inspiration, and earn points.</p><button class="text-button" data-page-link="play">Enter the arena ↗</button></article>
+        <article class="feature-card feature-free"><div class="feature-icon">✦</div><span class="card-kicker">NO RULES, NO TIMER</span><h3>Free studio</h3><p>A blank canvas with every tool. Your session is auto-saved so you can pick up where you left off.</p><button class="text-button" data-open-studio="free">Start drawing ↗</button></article>
+        <article class="feature-card feature-gallery"><div class="feature-icon">▧</div><span class="card-kicker">YOUR ART COLLECTION</span><h3>Personal gallery</h3><p>Save your work in this browser, reopen it later, or export your artwork.</p><button class="text-button" data-page-link="gallery">View gallery ↗</button></article>
+      </div>
+      <div class="home-note"><span>✦</span><p><b>Made for every screen.</b> Draw with a mouse, stylus (pressure supported) or your finger on desktop, tablet and mobile. Press <kbd>?</kbd> in the studio for keyboard shortcuts.</p></div>
+    </section>
+
+    <!-- TRAINING -->
+    <section id="trainingPage" class="page">
+      <div class="page-intro"><span class="eyebrow">LEARN • PRACTICE • IMPROVE</span><h1>Training <em>studio.</em></h1><p>Short lessons to help you understand the tools and build a drawing from simple shapes to finished art.</p></div>
+      <div class="training-layout">
+        <aside class="lesson-sidebar"><h3>LESSON PLAN</h3><div id="lessonList" class="lesson-list"></div></aside>
+        <article class="lesson-panel">
+          <div class="lesson-top"><span id="lessonNumber" class="lesson-number">LESSON 01</span><span id="lessonDuration" class="lesson-duration">5 MIN</span></div>
+          <div class="lesson-visual" id="lessonVisual"><div class="lesson-visual-art">◯ △ □</div></div>
+          <h2 id="lessonTitle">Meet your canvas</h2><p id="lessonIntro" class="lesson-intro"></p>
+          <div id="lessonSteps" class="lesson-steps"></div>
+          <div class="tip-box"><span>✦ PRO TIP</span><p id="lessonTip"></p></div>
+          <div class="lesson-actions"><button class="button button-ghost" id="previousLesson">← Previous</button><button class="button button-primary" id="practiceLesson">Practice this lesson →</button><button class="button button-ghost" id="nextLesson">Next lesson →</button></div>
+        </article>
+      </div>
+      <div class="tool-guide-section"><div class="section-heading"><div><span class="eyebrow">QUICK REFERENCE</span><h2>Know your tools.</h2><p>Every tool in the studio and what it is best used for.</p></div></div><div id="toolGuideGrid" class="tool-guide-grid"></div></div>
+    </section>
+
+    <!-- PLAY -->
+    <section id="playPage" class="page">
+      <div class="page-intro"><span class="eyebrow">YOUR TIME TO SHINE</span><h1>Enter the <em>arena.</em></h1><p>Choose your challenge settings. You can draw from your imagination or reveal a visual reference for inspiration.</p></div>
+      <div class="challenge-setup">
+        <div class="setup-copy"><span class="eyebrow">READY, SET, DRAW</span><h2>Your next masterpiece<br>starts here.</h2><p>Each round gives you a subject, a time limit and a scoring breakdown. The timer only starts when you press Start.</p>
+          <label class="field-label" for="difficulty">Difficulty</label><select id="difficulty" class="select-field"><option value="easy">Relaxed · 90 seconds</option><option value="normal" selected>Classic · 60 seconds</option><option value="hard">Speed round · 35 seconds</option></select>
+          <label class="field-label" for="roundCount">Number of rounds</label><select id="roundCount" class="select-field"><option value="3">3 rounds</option><option value="5" selected>5 rounds</option><option value="10">10 rounds</option></select>
+          <label class="field-label" for="categorySelect">Category</label><select id="categorySelect" class="select-field"><option value="all">All categories</option></select>
+          <label class="check-row"><input type="checkbox" id="autoReference" checked><span>Show the reference image automatically</span></label>
+          <p class="best-line" id="bestScore"></p>
+          <button id="startGame" class="button button-primary start-button">Start competition <span>→</span></button>
+        </div>
+        <div class="setup-preview"><div class="preview-top"><span>YOUR CHALLENGE</span><span class="preview-tag">EXAMPLE</span></div><div class="preview-illustration" id="setupIllustration"></div><div class="preview-bottom"><div><small>DRAW THIS</small><b id="previewName">Cute cat</b></div><span>✦</span></div></div>
+      </div>
+      <div class="scoring-info"><h3>How scoring works</h3><div class="scoring-grid"><div><b>30</b><span>Participation</span></div><div><b>60</b><span>Canvas coverage</span></div><div><b>50</b><span>Drawing activity</span></div><div><b>40</b><span>Color variety</span></div><div><b>40</b><span>Shape variety</span></div><div><b>30</b><span>Time bonus</span></div></div><p>Scores reward creative effort and use of the tools. They do not judge artistic quality or whether your drawing exactly matches the prompt. Max 250 points per round.</p></div>
+    </section>
+
+    <!-- STUDIO -->
+    <section id="studioPage" class="page studio-page">
+      <div class="studio-header">
+        <div><button id="exitStudio" class="back-button">← Exit</button><span id="studioMode" class="eyebrow">CREATIVE STUDIO</span><h1 id="studioTitle">Let's make art.</h1><p id="studioPrompt">Choose a tool and start drawing.</p></div>
+        <div class="studio-header-actions"><div id="timerPanel" class="timer-panel hidden"><small>TIME LEFT</small><b id="timerValue">01:00</b></div><div class="round-label" id="roundLabel"></div><button id="finishRound" class="button button-primary hidden">Finish round ✓</button></div>
+      </div>
+      <details id="lessonHint" class="lesson-hint hidden"><summary>Lesson steps (tap to show)</summary><ol id="lessonHintList"></ol></details>
+
+      <div class="studio-toolbar">
+        <div class="toolbar-group">
+          <span class="toolbar-label">DRAW</span>
+          <button class="tool-button active" data-tool="brush" title="Brush (B)"><span>✎</span><small>Brush</small></button>
+          <button class="tool-button" data-tool="pencil" title="Pencil (P)"><span>／</span><small>Pencil</small></button>
+          <button class="tool-button" data-tool="marker" title="Marker (M)"><span>▬</span><small>Marker</small></button>
+          <button class="tool-button" data-tool="eraser" title="Eraser (E)"><span>▱</span><small>Eraser</small></button>
+          <button class="tool-button" data-tool="spray" title="Spray paint (S)"><span>⁙</span><small>Spray</small></button>
+          <button class="tool-button" data-tool="fill" title="Fill bucket (G)"><span>▨</span><small>Fill</small></button>
+          <button class="tool-button" data-tool="eyedropper" title="Eyedropper (I, or Alt+click)"><span>⌖</span><small>Pick</small></button>
+          <button class="tool-button" data-tool="text" title="Add text (T)"><span>T</span><small>Text</small></button>
+          <button class="tool-button" data-tool="hand" title="Pan (H, or hold Space)"><span>✋</span><small>Pan</small></button>
+        </div>
+        <div class="toolbar-group shape-group"><span class="toolbar-label">SHAPES</span><select id="shapeSelect" class="shape-select" aria-label="Choose a shape"><option value="">Choose shape…</option><option value="line">Line (L)</option><option value="rectangle">Rectangle (R)</option><option value="rounded">Rounded rectangle</option><option value="ellipse">Ellipse (O)</option><option value="circle">Circle</option><option value="triangle">Triangle</option><option value="diamond">Diamond</option><option value="pentagon">Pentagon</option><option value="hexagon">Hexagon</option><option value="star">Star</option><option value="heart">Heart</option><option value="arrow">Arrow</option><option value="cloud">Cloud</option></select></div>
+        <div class="toolbar-group history-group"><span class="toolbar-label">EDIT</span><button id="undoBtn" class="icon-button" title="Undo (Ctrl+Z)" aria-label="Undo">↶</button><button id="redoBtn" class="icon-button" title="Redo (Ctrl+Y)" aria-label="Redo">↷</button><button id="clearBtn" class="icon-button" title="Clear canvas" aria-label="Clear canvas">⌫</button><button id="newBtn" class="icon-button" title="New canvas" aria-label="New canvas">＋</button></div>
+      </div>
+
+      <div class="studio-workspace">
+        <aside class="studio-left-panel" id="studioPanel">
+          <div class="sheet-grip"><span></span></div>
+          <div class="panel-section"><div class="panel-heading"><b>COLOR STUDIO</b><span>✦</span></div>
+            <div class="current-color-row"><input type="color" id="colorPicker" value="#8065e8" aria-label="Choose color"><div><b id="colorHex">#8065E8</b><small>Current color</small></div></div>
+            <div id="swatches" class="swatches"></div>
+            <div class="recent-label">RECENT</div><div id="recentColors" class="swatches recent"></div>
+            <div class="palette-row"><button id="addSwatch" class="mini-button">＋ Add to palette</button><button id="resetPalette" class="mini-button">Reset</button></div></div>
+          <div class="panel-section"><div class="panel-heading"><b>BRUSH SETTINGS</b></div>
+            <label class="setting-label" for="brushSize">Size <output id="sizeOutput">8 px</output></label><input id="brushSize" class="range-input" type="range" min="1" max="120" value="8">
+            <label class="setting-label" for="opacity">Opacity <output id="opacityOutput">100%</output></label><input id="opacity" class="range-input" type="range" min="5" max="100" value="100">
+            <label class="setting-label" for="smoothing">Smoothing <output id="smoothingOutput">35%</output></label><input id="smoothing" class="range-input" type="range" min="0" max="90" value="35">
+            <label class="setting-label" for="tolerance">Fill tolerance <output id="toleranceOutput">32</output></label><input id="tolerance" class="range-input" type="range" min="0" max="120" value="32">
+            <label class="setting-label" for="fillMode">Shape style</label><select id="fillMode" class="select-field compact"><option value="stroke">Outline</option><option value="fill">Filled</option><option value="both">Fill + darker outline</option></select></div>
+          <div class="panel-section"><div class="panel-heading"><b>PRO ASSISTS</b></div>
+            <label class="toggle-row"><span>Mirror drawing</span><input id="mirrorToggle" type="checkbox"><i></i></label>
+            <label class="toggle-row"><span>Symmetry (4-way)</span><input id="symmetryToggle" type="checkbox"><i></i></label>
+            <label class="toggle-row"><span>Show grid</span><input id="gridToggle" type="checkbox"><i></i></label>
+            <label class="toggle-row"><span>Show center guide</span><input id="centerToggle" type="checkbox"><i></i></label>
+            <div class="assist-actions"><button id="zoomOut" class="mini-button">− Zoom</button><span id="zoomLabel" class="zoom-label">100%</span><button id="zoomIn" class="mini-button">＋ Zoom</button><button id="resetZoom" class="mini-button">Fit</button></div></div>
+          <div class="panel-section"><div class="panel-heading"><b>CANVAS</b></div>
+            <label class="setting-label" for="canvasSize">Size</label><select id="canvasSize" class="select-field compact"><option value="landscape">Landscape 1200×800</option><option value="square">Square 1000×1000</option><option value="portrait">Portrait 800×1200</option><option value="custom" hidden>Custom (opened artwork)</option></select></div>
+        </aside>
+
+        <div class="canvas-column">
+          <div class="canvas-topline">
+            <div><span class="canvas-status-dot"></span><span id="canvasStatus">READY TO DRAW</span></div>
+            <div class="canvas-actions"><button id="referenceToggle" class="mini-button">▧ Reference</button><button id="uploadReference" class="mini-button">＋ Upload</button><input id="referenceFile" type="file" accept="image/*" hidden><select id="exportFormat" class="mini-select" aria-label="Export format"><option value="png">PNG</option><option value="jpeg">JPG</option><option value="webp">WebP</option></select><button id="downloadBtn" class="mini-button">↓ Export</button><button id="saveBtn" class="mini-button mini-primary">Save artwork</button><button id="helpBtn" class="mini-button" aria-label="Keyboard shortcuts">?</button></div>
+          </div>
+          <div class="drawing-stage" id="drawingStage">
+            <div id="referenceCard" class="reference-card hidden"><div class="reference-card-head"><b>REFERENCE IMAGE</b><button id="closeReference" aria-label="Close reference">×</button></div><div class="reference-image-wrap"><img id="referenceImage" alt="Drawing reference"></div><div class="reference-foot" id="referenceFoot">Use this as inspiration — make it your own.</div></div>
+            <div class="canvas-viewport" id="viewport">
+              <div class="canvas-wrap" id="canvasWrap">
+                <canvas id="drawingCanvas" width="1200" height="800" aria-label="Drawing canvas"></canvas>
+                <canvas id="overlayCanvas" width="1200" height="800" aria-hidden="true"></canvas>
+                <div class="grid-overlay" id="gridOverlay"></div>
+                <div class="center-guide hidden" id="centerGuide"></div>
+              </div>
+            </div>
+            <div id="readyOverlay" class="ready-overlay hidden"><div class="ready-card"><span class="eyebrow" id="readyRound">ROUND 1</span><div class="ready-emoji" id="readyEmoji">🎨</div><h2 id="readyName">Ready?</h2><p id="readyHint"></p><button id="readyStart" class="button button-primary">Start round →</button></div></div>
+          </div>
+          <div class="canvas-footer"><span id="drawingStats">0 actions · 0 shapes · 0 colors</span><span>Pinch / Ctrl+scroll to zoom • Space + drag to pan • Ctrl/Cmd+Z to undo</span></div>
+        </div>
+      </div>
+
+      <div class="mobile-tool-dock" id="mobileToolDock">
+        <button data-tool="brush" class="active">✎<small>Brush</small></button>
+        <button data-tool="eraser">▱<small>Eraser</small></button>
+        <button data-tool="fill">▨<small>Fill</small></button>
+        <button id="mobileUndo">↶<small>Undo</small></button>
+        <button id="mobileColorButton">●<small>Color</small></button>
+        <button id="mobileMoreButton">•••<small>More</small></button>
+      </div>
+      <div id="sheetBackdrop" class="sheet-backdrop"></div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="galleryPage" class="page">
+      <div class="page-intro gallery-intro"><div><span class="eyebrow">YOUR CREATIVE COLLECTION</span><h1>Art <em>gallery.</em></h1><p>Your saved masterpieces, all in one place on this device.</p></div><div class="gallery-tools"><button id="exportGallery" class="button button-ghost">Export backup ↓</button><label class="button button-primary import-label">Import backup ↑<input id="importGallery" type="file" accept="application/json" hidden></label></div></div>
+      <div class="gallery-toolbar"><div id="galleryFilters" class="filter-chips"><button class="chip active" data-filter="all">All</button><button class="chip" data-filter="free">Free draws</button><button class="chip" data-filter="challenge">Challenges</button></div><span id="gallerySummary">0 saved artworks</span></div>
+      <div id="galleryGrid" class="gallery-grid"></div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="resultsPage" class="page">
+      <div class="results-card"><div class="results-sparkle">✦</div><span class="eyebrow">CHALLENGE COMPLETE</span><h1>You made it<br>to the <em>finish line.</em></h1><div class="final-score"><b id="finalScore">0</b><span>TOTAL POINTS</span></div><p id="resultsBest" class="results-best"></p><div id="scoreBreakdown" class="score-breakdown"></div><div class="results-actions"><button class="button button-primary" id="playAgain">Play again ↗</button><button class="button button-ghost" data-page-link="gallery">See my gallery</button><button class="button button-ghost" data-page-link="home">Home</button></div></div>
+    </section>
+  </main>
+
+  <div id="brushCursor" class="brush-cursor"></div>
+
+  <!-- Generic dialog -->
+  <div id="dialog" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="modal-card"><h3 id="dialogTitle">Title</h3><p id="dialogMessage"></p><input id="dialogInput" class="text-input hidden" type="text" maxlength="60"><div class="modal-actions"><button id="dialogCancel" class="button button-ghost">Cancel</button><button id="dialogAlt" class="button button-ghost hidden"></button><button id="dialogConfirm" class="button button-primary">OK</button></div></div></div>
+
+  <!-- Text dialog -->
+  <div id="textDialog" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="textTitle"><div class="modal-card"><h3 id="textTitle">Add text</h3><textarea id="textInput" class="text-input" rows="3" maxlength="200" placeholder="Type your text…"></textarea><div class="text-options"><label>Font<select id="textFont" class="select-field compact"><option value="Arial, sans-serif">Sans</option><option value="Georgia, serif">Serif</option><option value="'Courier New', monospace">Mono</option><option value="'Comic Sans MS', 'Marker Felt', cursive">Handwritten</option><option value="Impact, 'Arial Black', sans-serif">Poster</option></select></label><label>Size<input id="textSize" class="text-input small" type="number" min="10" max="400" value="48"></label><label class="check-row inline"><input id="textBold" type="checkbox" checked><span>Bold</span></label></div><div class="modal-actions"><button id="textCancel" class="button button-ghost">Cancel</button><button id="textConfirm" class="button button-primary">Add text</button></div></div></div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="modal lightbox hidden" role="dialog" aria-modal="true"><div class="lightbox-card"><button id="lightboxClose" class="lightbox-close" aria-label="Close">×</button><img id="lightboxImg" alt=""><b id="lightboxTitle"></b></div></div>
+
+  <!-- Shortcuts -->
+  <div id="shortcutsDialog" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card wide"><h3>Keyboard shortcuts</h3><div class="shortcut-grid">
+    <span><kbd>B</kbd> Brush</span><span><kbd>P</kbd> Pencil</span><span><kbd>M</kbd> Marker</span><span><kbd>E</kbd> Eraser</span>
+    <span><kbd>S</kbd> Spray</span><span><kbd>G</kbd> Fill bucket</span><span><kbd>I</kbd> Eyedropper</span><span><kbd>T</kbd> Text</span>
+    <span><kbd>H</kbd> Pan tool</span><span><kbd>Space</kbd> Hold to pan</span><span><kbd>L</kbd> Line</span><span><kbd>R</kbd> Rectangle</span>
+    <span><kbd>O</kbd> Ellipse</span><span><kbd>[</kbd> <kbd>]</kbd> Brush size</span><span><kbd>Alt</kbd>+click Pick color</span><span><kbd>Shift</kbd> Straight / equal shapes</span>
+    <span><kbd>Ctrl</kbd>+<kbd>Z</kbd> Undo</span><span><kbd>Ctrl</kbd>+<kbd>Y</kbd> Redo</span><span><kbd>Ctrl</kbd>+<kbd>S</kbd> Save</span><span><kbd>Ctrl</kbd>+<kbd>0</kbd> Fit view</span>
+    <span><kbd>+</kbd> <kbd>−</kbd> Zoom</span><span><kbd>Ctrl</kbd>+scroll Zoom</span><span><kbd>?</kbd> This help</span><span><kbd>Esc</kbd> Close</span>
+  </div><div class="modal-actions"><button id="closeShortcuts" class="button button-primary">Got it</button></div></div></div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer class="footer"><span>✦ ART ARENA</span><span>Make room for imagination.</span><span>Designed for creative minds.</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
